@@ -55,6 +55,8 @@ render() {
       {this.state.exams.map(
         (exam, index) => (
           <ListItem
+          	onPress={() => this.props.navigation
+          		.navigate("QuestionList",{examId: exam.id})} 
             key={index}
             title={exam.title}
             rightIcon = {<Icon
