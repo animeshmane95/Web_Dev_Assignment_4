@@ -13,30 +13,45 @@ class QuestionList extends Component {
       examId: 1,
       questionType : 1
     }
-    this.createQuestion = this.createQuestion.bind(this)
+    //this.createQuestion = this.createQuestion.bind(this)
   }
   componentDidMount() {
     const {navigation} = this.props;
     const examId = navigation.getParam("examId")
-    fetch("http://localhost:8080/api/exam/"+examId+"/question")
+    this.setState({examId: examId})
+    fetch("http://10.0.0.77:8080/api/exam/"+examId+"/question")
       .then(response => (response.json()))
-      .then(questions => this.setState({questions}))
+      .then(questions => {
+        this.setState({questions})
+
+      })
+
+  }
+
+  componentWillReceiveProps(newProps){
+
+    const {navigation} = newProps;
+    const examId = navigation.getParam("examId")
+    this.setState({examId: examId})
+    fetch("http://10.0.0.77:8080/api/exam/"+examId+"/question")
+      .then(response => (response.json()))
+      .then(questions => {
+        this.setState({questions})})
+
   }
 
 
-  createQuestion(){
-
-    Alert.alert(this.state.questionType)
-
+  createQuestion(examId){
+    Alert.alert(''+examId)
     if(this.state.questionType === "TrueFalse")
                 this.props.navigation
-                  .navigate("TrueFalseQuestionEditor")
+                  .navigate("TrueFalseQuestionEditor", {examId: this.state.examId})
     if(this.state.questionType === "MultipleChoice")
                 this.props.navigation
-                  .navigate("MultipleChoiceQuestionEditor")
-
-
-
+                  .navigate("MultipleChoiceQuestionEditor",{examId: this.state.examId})
+    if(this.state.questionType === "EssayQuestion")
+                this.props.navigation
+                  .navigate("EssayQuestionEditor",{examId: this.state.examId})
   }
   render() {
     return(
@@ -45,20 +60,9 @@ class QuestionList extends Component {
         (question, index) => (
            
           <ListItem 
-
-            onPress={() => {
-              if(question.type === "TrueFalse")
-                this.props.navigation
-                  .navigate("TrueFalseQuestionEditor", {questionId: question.id})
-              if(question.type === "MultipleChoice")
-                this.props.navigation
-                  .navigate("MultipleChoiceQuestionEditor", {questionId: question.id})
-            }}
             key={index}
             subtitle={question.description}
             title={question.title}
-
-
             />))}
 
            <Picker
@@ -66,7 +70,7 @@ class QuestionList extends Component {
             this.setState({questionType: itemValue})}
           selectedValue={this.state.questionType}>
           <Picker.Item value="MultipleChoice" label="Multiple choice" />
-          <Picker.Item value="ES" label="Essay" />
+          <Picker.Item value="EssayQuestion" label="Essay" />
           <Picker.Item value="TrueFalse" label="True or false" />
           <Picker.Item value="FB" label="Fill in the blanks" />
         </Picker>
@@ -76,7 +80,7 @@ class QuestionList extends Component {
       color='#517fa4'
       name='ios-add-circle'
       type='ionicon'
-       onPress={() => this.createQuestion()}
+       onPress={() => this.createQuestion(this.state.examId)}
     />
         
       </View>

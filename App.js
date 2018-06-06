@@ -7,6 +7,7 @@ import Exam from './elements/Exam'
 import QuestionTypeButtonGroupChooser from './elements/QuestionTypeButtonGroupChooser'
 import QuestionTypePicker from './elements/QuestionTypePicker'
 import AssignmentEditor from './elements/AssignmentEditor'
+import EssayQuestionEditor from './elements/EssayQuestionEditor'
 import ExamEditor from './elements/ExamEditor'
 import TrueFalseQuestionEditor from './elements/TrueFalseQuestionEditor'
 import MultipleChoiceQuestionEditor from './elements/MultipleChoiceQuestionEditor'
@@ -101,6 +102,7 @@ const App = createStackNavigator({
   AssignmentList,
   ExamList,
   ExamEditor,
+  EssayQuestionEditor,
   AssignmentEditor,
   TrueFalseQuestionEditor,
   MultipleChoiceQuestionEditor,

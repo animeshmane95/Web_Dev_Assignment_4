@@ -88,6 +88,7 @@ class AssignmentEditor extends React.Component {
         <Text>Points : {this.state.points}</Text>
         <Text>{this.state.description}</Text>
         <Text>{this.state.answer}</Text>
+        
 
       </View>
     )

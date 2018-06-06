@@ -37,17 +37,17 @@ class MultipleChoiceQuestionEditor extends React.Component {
           Description is required
         </FormValidationMessage>
 
-        <FormLabel>Choices</FormLabel>
+        <FormLabel>Choice</FormLabel>
         <FormInput onChangeText={
           text => this.updateForm({options: text})
         }/>
 
+
+
         <Button	backgroundColor="green"
                  color="white"
-                 title="Save"/>
-        <Button	backgroundColor="red"
-                 color="white"
-                 title="Cancel"/>
+                 title="Save"
+                 />
 
         <Text h3>Preview</Text>
         <Text h2>{this.state.title}</Text>
