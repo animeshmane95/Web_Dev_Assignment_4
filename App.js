@@ -6,6 +6,7 @@ import Icons from './elements/Icons'
 import Exam from './elements/Exam'
 import QuestionTypeButtonGroupChooser from './elements/QuestionTypeButtonGroupChooser'
 import QuestionTypePicker from './elements/QuestionTypePicker'
+import AssignmentEditor from './elements/AssignmentEditor'
 import TrueFalseQuestionEditor from './elements/TrueFalseQuestionEditor'
 import MultipleChoiceQuestionEditor from './elements/MultipleChoiceQuestionEditor'
 import { createStackNavigator } from 'react-navigation'
@@ -16,6 +17,7 @@ import ModuleList from './components/ModuleList'
 import LessonList from './components/LessonList'
 import TopicList from './components/TopicList'
 import WidgetList from './components/WidgetList'
+import AssignmentList from './components/AssignmentList'
 import QuestionList from './components/QuestionList'
 
 class Home extends React.Component {
@@ -93,6 +95,8 @@ const App = createStackNavigator({
   TopicList,
   WidgetList,
   QuestionList,
+  AssignmentList,
+  AssignmentEditor,
   TrueFalseQuestionEditor,
   MultipleChoiceQuestionEditor,
   ScreenA,

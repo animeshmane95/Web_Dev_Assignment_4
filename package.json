@@ -26,7 +26,9 @@
     "navigation": "^5.0.1",
     "react": "16.3.1",
     "react-native": "^0.55.4",
+    "react-native-autogrow-textinput": "^5.1.1",
     "react-native-elements": "^0.19.1",
+    "react-native-fontawesome": "^5.7.0",
     "react-navigation": "^2.0.4",
     "vector": "0.0.4"
   }
