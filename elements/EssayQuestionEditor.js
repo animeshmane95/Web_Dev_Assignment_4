@@ -1,5 +1,5 @@
 import React from 'react'
-import {View} from 'react-native'
+import {View,ScrollView} from 'react-native'
 import {Text, Button, CheckBox, TextInput} from 'react-native-elements'
 import {FormLabel, FormInput, FormValidationMessage}
   from 'react-native-elements'
@@ -49,7 +49,7 @@ class EssayQuestionEditor extends React.Component {
   }
   render() {
     return(
-      <View>
+      <ScrollView>
 
       <FormLabel>Title</FormLabel>
         <FormInput onChangeText={
@@ -85,6 +85,13 @@ class EssayQuestionEditor extends React.Component {
           this.createEssay(this.state.examId)}
           />
 
+        <Button backgroundColor="red"
+                 color="white"
+                 title="Cancel"
+          onPress={() => 
+         this.props.navigation.navigate("QuestionList"
+        ,{examId:this.state.examId})}/>
+
         <Text h3>Preview</Text>
         <Text h2>{this.state.title}</Text>
         <Text>{this.state.description}</Text>
@@ -92,7 +99,7 @@ class EssayQuestionEditor extends React.Component {
         <Text>{this.state.points}</Text>
 
 
-      </View>
+      </ScrollView>
     )
   }
 }

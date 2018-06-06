@@ -51,7 +51,7 @@ class Home extends React.Component {
                   .navigate('ScreenB') } />
 
 
-        <TrueFalseQuestionEditor/>
+        
 
         <QuestionTypeButtonGroupChooser/>
         <QuestionTypePicker/>

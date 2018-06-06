@@ -1,5 +1,5 @@
 import React from 'react'
-import {View} from 'react-native'
+import {View,Alert} from 'react-native'
 import {Text, Button, CheckBox} from 'react-native-elements'
 import {FormLabel, FormInput, FormValidationMessage}
   from 'react-native-elements'
@@ -15,6 +15,35 @@ class TrueFalseQuestionEditor extends React.Component {
       isTrue: true
     }
   }
+
+componentDidMount() {
+    const {navigation} = this.props;
+    const examId = navigation.getParam("examId")
+    this.setState({examId: examId})
+  }
+
+
+  createTrueFalseQuestion(examId){
+
+    Alert.alert(''+ this.state.examId)
+
+      var TrueFalseQuestion = {
+      title: this.state.title,
+      description: this.state.description,
+      points: this.state.points,
+      isTrue: this.state.isTrue
+      }
+
+      return fetch('http://10.0.0.77:8080/api/exam/'+examId+'/truefalse',
+      {
+        body: JSON.stringify(TrueFalseQuestion),
+        headers: { 'Content-Type': 'application/json' },
+        method: 'POST'
+      }).then(() => this.props.navigation.navigate("QuestionList"
+        ,{examId:this.state.examId}))
+
+    }
+
   updateForm(newState) {
     this.setState(newState)
   }
@@ -42,10 +71,15 @@ class TrueFalseQuestionEditor extends React.Component {
 
         <Button	backgroundColor="green"
                  color="white"
-                 title="Save"/>
+                 title="Save"
+                 onPress={() => 
+          this.createTrueFalseQuestion(this.state.examId)}/>
+
+
         <Button	backgroundColor="red"
                  color="white"
-                 title="Cancel"/>
+                 title="Cancel"
+                 />
 
         <Text h3>Preview</Text>
         <Text h2>{this.state.title}</Text>

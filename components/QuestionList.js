@@ -42,7 +42,6 @@ class QuestionList extends Component {
 
 
   createQuestion(examId){
-    Alert.alert(''+examId)
     if(this.state.questionType === "TrueFalse")
                 this.props.navigation
                   .navigate("TrueFalseQuestionEditor", {examId: this.state.examId})
