@@ -18,7 +18,7 @@ class WidgetList extends Component {
     this.setState({
       topicId: topicId
     })
-    fetch("http://192.168.43.120:8080/api/topic/"+topicId+"/widget")
+    fetch("http://10.0.0.77:8080/api/topic/"+topicId+"/widget")
       .then(response => (response.json()))
       .then(widgets => this.setState({widgets}))
   }
@@ -32,7 +32,10 @@ class WidgetList extends Component {
        onPress={() => this.props.navigation
               .navigate("AssignmentList",{topicId:
                 this.state.topicId})}/>
-       <Button title="EXAM WIDGET" color = "blue" />
+       <Button title="EXAM WIDGET" color = "blue" 
+       onPress={() => this.props.navigation
+              .navigate("ExamList",{topicId:
+                this.state.topicId})}/>
       </View>
     )
   }

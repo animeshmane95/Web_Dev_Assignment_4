@@ -3,15 +3,14 @@ import {View} from 'react-native'
 import {Text, Button, CheckBox} from 'react-native-elements'
 import {FormLabel, FormInput, FormValidationMessage} from 'react-native-elements'
 
-class AssignmentEditor extends React.Component {
-  static navigationOptions = { title: "AssignmentEditor"}
+class ExamEditor extends React.Component {
+  static navigationOptions = { title: "ExamEditor"}
   constructor(props) {
     super(props)
     this.state = {
-      answer: 'Default Answer',
-      description: 'This description of the assignment widget',
-      points: 0,
-      title: 'Assignment Title'
+      questions: [],
+      description: 'This is description of the exam widget',
+      title: 'Default Exam'
     }
   }
 
@@ -21,22 +20,21 @@ class AssignmentEditor extends React.Component {
     this.setState({topicId: topicId})
   }
 
-    createAssignment(topicId){
+    createExam(topicId){
 
-      var assignment = {
-      answer: this.state.answer,
+      var exam = {
       description: this.state.description,
-      points: this.state.points,
+      questions: this.state.questions,
       title: this.state.title
 
       }
 
-      return fetch('http://10.0.0.77:8080/api/topic/'+topicId+'/assignment',
+      return fetch('http://10.0.0.77:8080/api/topic/'+topicId+'/exam',
       {
-        body: JSON.stringify(assignment),
+        body: JSON.stringify(exam),
         headers: { 'Content-Type': 'application/json' },
         method: 'POST'
-      }).then(() => this.props.navigation.navigate("AssignmentList"
+      }).then(() => this.props.navigation.navigate("ExamList"
         ,{topicId:this.state.topicId}))
 
     }
@@ -57,41 +55,27 @@ class AssignmentEditor extends React.Component {
           Title is required
         </FormValidationMessage>
 
-        <FormLabel>Points</FormLabel>
-        <FormInput onChangeText={
-          text => this.updateForm({points: text})
-        }/>
-
         <FormLabel>Description</FormLabel>
         <FormInput onChangeText={
           text => this.updateForm({description: text})
         }/>
-
-        <FormLabel>Answer</FormLabel>
-        <FormInput onChangeText={
-          text => this.updateForm({answer: text})
-        }/>
-
         
 
         <Button	backgroundColor="green"
                  color="white"
                  title="Save"
         onPress={() => 
-          this.createAssignment(this.state.topicId)}
+          this.createExam(this.state.topicId)}
           />
 
 
           
         <Text h3>Preview</Text>
         <Text h2>{this.state.title}</Text>
-        <Text>Points : {this.state.points}</Text>
         <Text>{this.state.description}</Text>
-        <Text>{this.state.answer}</Text>
-
       </View>
     )
   }
 }
 
-export default AssignmentEditor
+export default ExamEditor

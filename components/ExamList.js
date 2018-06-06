@@ -4,68 +4,66 @@ import {Text, ListItem} from 'react-native-elements'
 import {Button} from 'react-native-elements'
 import { Icon } from 'react-native-elements'
 
-
-class AssignmentList extends Component {
-  static navigationOptions = {title: 'assignments'}
+class ExamList extends Component {
+  static navigationOptions = {title: 'exams'}
   constructor(props) {
     super(props)
     this.state = {
-      assignments: [],
+      exams: [],
       topicId: 1
     }
   }
 
-  deleteAssignment(assignmentId){
+   deleteExam(examId){
 
-      return fetch('http://10.0.0.77:8080/api/delete/assignment/'+assignmentId , {
+      return fetch('http://10.0.0.77:8080/api/delete/exam/'+examId , {
       method: 'Delete'
-    }).then(() => this.props.navigation.navigate("AssignmentList"
+    }).then(() => this.props.navigation.navigate("ExamList"
         ,{topicId:this.state.topicId}))
 
   }
 
-  componentWillReceiveProps(newProps){
+   componentWillReceiveProps(newProps){
 
     const {navigation} = newProps;
     const topicId = navigation.getParam("topicId")
     this.setState({topicId: topicId})
-    fetch("http://10.0.0.77:8080/api/topic/"+topicId+"/assignment")
+    fetch("http://10.0.0.77:8080/api/topic/"+topicId+"/exam")
       .then(response => (response.json()))
-      .then(assignments => {
-        this.setState({assignments})})
+      .then(exams => {
+        this.setState({exams})})
 
   }
 
 
-
-
-  componentDidMount() {
+componentDidMount() {
     const {navigation} = this.props;
     const topicId = navigation.getParam("topicId")
     this.setState({topicId: topicId})
-    fetch("http://10.0.0.77:8080/api/topic/"+topicId+"/assignment")
+    fetch("http://10.0.0.77:8080/api/topic/"+topicId+"/exam")
       .then(response => (response.json()))
-      .then(assignments => {
-        this.setState({assignments})})
+      .then(exams => {
+        this.setState({exams})})
       }
-  
-  render() {
+
+
+render() {
     return(
       <ScrollView style={{padding: 15}}>
-      <Text> Assignment List for Topic {this.state.topicId}</Text>
+      <Text> Exam List for Topic {this.state.topicId}</Text>
       
-      {this.state.assignments.map(
-        (assignment, index) => (
+      {this.state.exams.map(
+        (exam, index) => (
           <ListItem
             key={index}
-            title={assignment.title}
+            title={exam.title}
             rightIcon = {<Icon
       reverse
       color='red'
       name='ios-close-circle-outline'
       type='ionicon'
         onPress={() => 
-          this.deleteAssignment(assignment.id)}
+          this.deleteExam(exam.id)}
     />
 
             }
@@ -78,7 +76,7 @@ class AssignmentList extends Component {
       name='ios-add-circle'
       type='ionicon'
        onPress={() => this.props.navigation
-              .navigate("AssignmentEditor",{topicId:
+              .navigate("ExamEditor",{topicId:
                 this.state.topicId})}
     />
 
@@ -86,4 +84,5 @@ class AssignmentList extends Component {
     )
   }
 }
-export default AssignmentList
+
+ export default ExamList
