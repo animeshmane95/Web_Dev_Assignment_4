@@ -51,6 +51,9 @@ class QuestionList extends Component {
     if(this.state.questionType === "EssayQuestion")
                 this.props.navigation
                   .navigate("EssayQuestionEditor",{examId: this.state.examId})
+    if(this.state.questionType === "Blank")
+                this.props.navigation
+                  .navigate("BlankQuestionEditor",{examId: this.state.examId})
   }
   render() {
     return(
@@ -71,7 +74,7 @@ class QuestionList extends Component {
           <Picker.Item value="MultipleChoice" label="Multiple choice" />
           <Picker.Item value="EssayQuestion" label="Essay" />
           <Picker.Item value="TrueFalse" label="True or false" />
-          <Picker.Item value="FB" label="Fill in the blanks" />
+          <Picker.Item value="Blank" label="Fill in the blanks" />
         </Picker>
 
         <Icon

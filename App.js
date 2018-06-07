@@ -9,6 +9,7 @@ import QuestionTypePicker from './elements/QuestionTypePicker'
 import AssignmentEditor from './elements/AssignmentEditor'
 import EssayQuestionEditor from './elements/EssayQuestionEditor'
 import ExamEditor from './elements/ExamEditor'
+import BlankQuestionEditor from './elements/BlankQuestionEditor'
 import TrueFalseQuestionEditor from './elements/TrueFalseQuestionEditor'
 import MultipleChoiceQuestionEditor from './elements/MultipleChoiceQuestionEditor'
 import { createStackNavigator } from 'react-navigation'
@@ -106,6 +107,7 @@ const App = createStackNavigator({
   AssignmentEditor,
   TrueFalseQuestionEditor,
   MultipleChoiceQuestionEditor,
+  BlankQuestionEditor,
   ScreenA,
   ScreenB,
   ScreenX

@@ -1,42 +1,41 @@
 import React from 'react'
-import {View,Alert} from 'react-native'
+import {View,ScrollView,TextInput} from 'react-native'
 import {Text, Button, CheckBox} from 'react-native-elements'
 import {FormLabel, FormInput, FormValidationMessage}
   from 'react-native-elements'
 
-class TrueFalseQuestionEditor extends React.Component {
-  static navigationOptions = { title: "True False"}
+class BlankQuestionEditor extends React.Component {
+  static navigationOptions = { title: "Essay"}
   constructor(props) {
     super(props)
     this.state = {
       title: '',
       description: '',
       points: 0,
-      isTrue: true
+      blankQuestion: ''
     }
   }
 
-componentDidMount() {
+  componentDidMount() {
     const {navigation} = this.props;
     const examId = navigation.getParam("examId")
     this.setState({examId: examId})
   }
 
 
-  createTrueFalseQuestion(examId){
+   createBlank(examId){
 
-    Alert.alert(''+ this.state.examId)
-
-      var TrueFalseQuestion = {
+      var blank = {
       title: this.state.title,
       description: this.state.description,
       points: this.state.points,
-      isTrue: this.state.isTrue
+      blankQuestion: this.state.blankQuestion
+
       }
 
-      return fetch('http://10.0.0.77:8080/api/exam/'+examId+'/truefalse',
+      return fetch('http://10.0.0.77:8080/api/exam/'+examId+'/blanks',
       {
-        body: JSON.stringify(TrueFalseQuestion),
+        body: JSON.stringify(blank),
         headers: { 'Content-Type': 'application/json' },
         method: 'POST'
       }).then(() => this.props.navigation.navigate("QuestionList"
@@ -44,13 +43,15 @@ componentDidMount() {
 
     }
 
+
   updateForm(newState) {
     this.setState(newState)
   }
   render() {
     return(
-      <View>
-        <FormLabel>Title</FormLabel>
+      <ScrollView>
+
+      <FormLabel>Title</FormLabel>
         <FormInput onChangeText={
           text => this.updateForm({title: text})
         }/>
@@ -66,30 +67,45 @@ componentDidMount() {
           Description is required
         </FormValidationMessage>
 
-        <CheckBox onPress={() => this.updateForm({isTrue: !this.state.isTrue})}
-                  checked={this.state.isTrue} title='The answer is true'/>
+        <FormLabel>Points</FormLabel>
+        <FormInput onChangeText={
+          text => this.updateForm({points: text})
+        }/>
 
-        <Button	backgroundColor="green"
+        <FormLabel>Blanks</FormLabel>
+        <TextInput
+    multiline={true}
+    numberOfLines={4}
+    onChangeText={text => this.updateForm({blanks: text})}
+    value={this.state.text}/>
+
+        
+
+
+        <Button backgroundColor="green"
                  color="white"
                  title="Save"
-                 onPress={() => 
-          this.createTrueFalseQuestion(this.state.examId)}/>
+        onPress={() => 
+          this.createBlank(this.state.examId)}
+          />
 
-
-        <Button	backgroundColor="red"
+        <Button backgroundColor="red"
                  color="white"
                  title="Cancel"
-                 onPress={() => 
+          onPress={() => 
          this.props.navigation.navigate("QuestionList"
-        ,{examId:this.state.examId})} />
+        ,{examId:this.state.examId})}/>
 
         <Text h3>Preview</Text>
         <Text h2>{this.state.title}</Text>
         <Text>{this.state.description}</Text>
+        <Text>{this.state.points}</Text>
+        <Text>{this.state.blanks}</Text>
 
-      </View>
+
+      </ScrollView>
     )
   }
 }
 
-export default TrueFalseQuestionEditor
+export default BlankQuestionEditor
