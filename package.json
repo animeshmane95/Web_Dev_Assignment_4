@@ -29,6 +29,7 @@
     "react-native": "^0.55.4",
     "react-native-autogrow-textinput": "^5.1.1",
     "react-native-elements": "^0.19.1",
+    "react-native-flexi-radio-button": "^0.2.2",
     "react-native-fontawesome": "^5.7.0",
     "react-navigation": "^2.0.4",
     "vector": "0.0.4"

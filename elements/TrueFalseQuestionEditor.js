@@ -4,6 +4,7 @@ import {Text, Button, CheckBox} from 'react-native-elements'
 import {FormLabel, FormInput, FormValidationMessage}
   from 'react-native-elements'
 
+
 class TrueFalseQuestionEditor extends React.Component {
   static navigationOptions = { title: "True False"}
   constructor(props) {
@@ -24,8 +25,6 @@ componentDidMount() {
 
 
   createTrueFalseQuestion(examId){
-
-    Alert.alert(''+ this.state.examId)
 
       var TrueFalseQuestion = {
       title: this.state.title,

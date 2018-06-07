@@ -11,7 +11,7 @@ class QuestionList extends Component {
     this.state = {
       questions: [],
       examId: 1,
-      questionType : 1
+      questionType : "MultipleChoice"
     }
     //this.createQuestion = this.createQuestion.bind(this)
   }
