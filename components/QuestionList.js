@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {View, Alert} from 'react-native'
+import {View,ScrollView, Alert} from 'react-native'
 import {Text, ListItem} from 'react-native-elements'
 import {Picker} from 'react-native'
 import { Icon } from 'react-native-elements'
@@ -40,6 +40,15 @@ class QuestionList extends Component {
 
   }
 
+   deleteQuestion(questionId){
+
+      return fetch('http://10.0.0.77:8080/api/delete/question/'+questionId , {
+      method: 'Delete'
+    }).then(() => this.props.navigation.navigate("QuestionList"
+        ,{examId:this.state.examId}))
+
+  }
+
 
   createQuestion(examId){
     if(this.state.questionType === "TrueFalse")
@@ -57,7 +66,7 @@ class QuestionList extends Component {
   }
   render() {
     return(
-      <View style={{padding: 15}}>
+      <ScrollView style={{padding: 15}}>
       {this.state.questions.map(
         (question, index) => (
            
@@ -65,6 +74,18 @@ class QuestionList extends Component {
             key={index}
             subtitle={question.description}
             title={question.title}
+
+            rightIcon = {
+               <Icon
+      reverse
+      color='red'
+      size = {15}
+      name='ios-close-circle-outline'
+      type='ionicon'
+       onPress={() => this.deleteQuestion(question.id)}
+    />
+            }
+
             />))}
 
            <Picker
@@ -85,7 +106,7 @@ class QuestionList extends Component {
        onPress={() => this.createQuestion(this.state.examId)}
     />
         
-      </View>
+      </ScrollView>
     )
   }
 }

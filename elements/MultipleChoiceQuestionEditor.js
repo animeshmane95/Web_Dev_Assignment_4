@@ -26,6 +26,7 @@ class MultipleChoiceQuestionEditor extends React.Component {
       title: this.state.title,
       description: this.state.description,
       points: this.state.points,
+      type: 'MCQ',
       correctOption: this.state.correctOption,
       options: this.state.options.toString()
       }
@@ -134,14 +135,14 @@ class MultipleChoiceQuestionEditor extends React.Component {
                  onPress={() => 
          this.props.navigation.navigate("QuestionList"
         ,{examId:this.state.examId})} />
-
-        <Text style={{textAlignVertical: "center",textAlign: "center",}} h5>Preview</Text>
-        <Text style={{textAlignVertical: "center",textAlign: "center",}} h2>Title : {this.state.title}</Text>
+        <View style={{padding: 15, borderWidth: 1,margin: 10,borderColor: "black"}}>
+        <Text style={{textAlignVertical: "center",textAlign: "center",}} h6>Preview</Text>
+        <Text style={{textAlignVertical: "center",textAlign: "center",}} h4>Title : {this.state.title}</Text>
         <Text style={{textAlignVertical: "center",textAlign: "center",}}> Description: {this.state.description}</Text>
         <Text style={{textAlignVertical: "center",textAlign: "center",}}>Points: {this.state.points}</Text>
         <Text style={{textAlignVertical: "center",textAlign: "center",}}>CorrectOption: {this.state.correctOption}</Text>
-
-        
+        </View>
+         
 
       </ScrollView>
     )

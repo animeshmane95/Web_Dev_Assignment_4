@@ -62,6 +62,7 @@ render() {
             rightIcon = {<Icon
       reverse
       color='red'
+      size = {15}
       name='ios-close-circle-outline'
       type='ionicon'
         onPress={() => 

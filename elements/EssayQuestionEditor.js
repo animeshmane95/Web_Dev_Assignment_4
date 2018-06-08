@@ -1,6 +1,6 @@
 import React from 'react'
-import {View,ScrollView} from 'react-native'
-import {Text, Button, CheckBox, TextInput} from 'react-native-elements'
+import {View,ScrollView,TextInput} from 'react-native'
+import {Text, Button, CheckBox} from 'react-native-elements'
 import {FormLabel, FormInput, FormValidationMessage}
   from 'react-native-elements'
 
@@ -12,6 +12,7 @@ class EssayQuestionEditor extends React.Component {
       title: '',
       description: '',
       points: 0,
+      type: 'essay',
       essayQuestion: ''
     }
   }
@@ -91,12 +92,25 @@ class EssayQuestionEditor extends React.Component {
           onPress={() => 
          this.props.navigation.navigate("QuestionList"
         ,{examId:this.state.examId})}/>
+        <View style={{padding: 15, borderWidth: 1,margin: 10,borderColor: "black"}}>
+        <Text  style={{textAlignVertical: "center",textAlign: "center",}} h6>Preview</Text>
+        <Text  style={{textAlignVertical: "center",textAlign: "center",}} h4>Title:{this.state.title}</Text>
+        <Text  style={{textAlignVertical: "center",textAlign: "center",}}>Description:{this.state.description}</Text>
+        <Text  style={{textAlignVertical: "center",textAlign: "center",}}>Question:{this.state.essayQuestion}</Text>
+        <Text  style={{textAlignVertical: "center",textAlign: "center",}}>Points:{this.state.points}</Text>
 
-        <Text h3>Preview</Text>
-        <Text h2>{this.state.title}</Text>
-        <Text>{this.state.description}</Text>
-        <Text>{this.state.essayQuestion}</Text>
-        <Text>{this.state.points}</Text>
+        <TextInput
+        style = {{
+          borderWidth: 1,
+          borderColor: "black",
+          height: 134,
+          margin: 15,
+          padding: 3
+        }}
+    multiline={true}
+    numberOfLines={4}/>
+
+    </View>
 
 
       </ScrollView>

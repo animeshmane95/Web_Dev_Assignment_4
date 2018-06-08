@@ -1,5 +1,5 @@
 import React from 'react'
-import {View,Alert} from 'react-native'
+import {View,Alert,ScrollView} from 'react-native'
 import {Text, Button, CheckBox} from 'react-native-elements'
 import {FormLabel, FormInput, FormValidationMessage}
   from 'react-native-elements'
@@ -13,7 +13,7 @@ class TrueFalseQuestionEditor extends React.Component {
       title: '',
       description: '',
       points: 0,
-      isTrue: true
+      isTrue: true,
     }
   }
 
@@ -30,6 +30,7 @@ componentDidMount() {
       title: this.state.title,
       description: this.state.description,
       points: this.state.points,
+      type: 'TrueFalse',
       isTrue: this.state.isTrue
       }
 
@@ -48,7 +49,7 @@ componentDidMount() {
   }
   render() {
     return(
-      <View>
+      <ScrollView>
         <FormLabel>Title</FormLabel>
         <FormInput onChangeText={
           text => this.updateForm({title: text})
@@ -56,6 +57,11 @@ componentDidMount() {
         <FormValidationMessage>
           Title is required
         </FormValidationMessage>
+
+        <FormLabel>Points</FormLabel>
+        <FormInput onChangeText={
+          text => this.updateForm({points: text})
+        }/>
 
         <FormLabel>Description</FormLabel>
         <FormInput onChangeText={
@@ -82,11 +88,15 @@ componentDidMount() {
          this.props.navigation.navigate("QuestionList"
         ,{examId:this.state.examId})} />
 
-        <Text h3>Preview</Text>
-        <Text h2>{this.state.title}</Text>
-        <Text>{this.state.description}</Text>
+         <View style={{padding: 15, borderWidth: 1,margin: 10,borderColor: "black"}}>
 
-      </View>
+        <Text style={{textAlignVertical: "center",textAlign: "center",}} h6>Preview</Text>
+        <Text style={{textAlignVertical: "center",textAlign: "center",}} h4> Title: {this.state.title}</Text>
+        <Text style={{textAlignVertical: "center",textAlign: "center",}}>Description: {this.state.description}</Text>
+        <Text style={{textAlignVertical: "center",textAlign: "center",}}>Points: {this.state.points}</Text>
+  
+        </View>
+      </ScrollView>
     )
   }
 }

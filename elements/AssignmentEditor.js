@@ -1,5 +1,5 @@
 import React from 'react'
-import {View} from 'react-native'
+import {View, ScrollView} from 'react-native'
 import {Text, Button, CheckBox} from 'react-native-elements'
 import {FormLabel, FormInput, FormValidationMessage} from 'react-native-elements'
 
@@ -47,7 +47,7 @@ class AssignmentEditor extends React.Component {
   }
   render() {
     return(
-      <View>
+      <ScrollView>
         <FormLabel>Title</FormLabel>
         <FormInput onChangeText={
           text => this.updateForm({title: text})
@@ -81,16 +81,24 @@ class AssignmentEditor extends React.Component {
           this.createAssignment(this.state.topicId)}
           />
 
+        <Button backgroundColor="red"
+                 color="white"
+                 title="Cancel"
+                 onPress={() => 
+         this.props.navigation.navigate("AssignmentList"
+        ,{topicId:this.state.topicId})} />
 
-          
+
+        <View style={{padding: 15, borderWidth: 1,margin: 10,borderColor: "black"}}>
         <Text h3>Preview</Text>
         <Text h2>{this.state.title}</Text>
         <Text>Points : {this.state.points}</Text>
         <Text>{this.state.description}</Text>
         <Text>{this.state.answer}</Text>
+        </View>
         
 
-      </View>
+      </ScrollView>
     )
   }
 }
