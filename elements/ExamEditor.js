@@ -29,7 +29,7 @@ class ExamEditor extends React.Component {
 
       }
 
-      return fetch('http://10.0.0.77:8080/api/topic/'+topicId+'/exam',
+      return fetch('https://webdev-summer1-2018-animesh.herokuapp.com/api/topic/'+topicId+'/exam',
       {
         body: JSON.stringify(exam),
         headers: { 'Content-Type': 'application/json' },

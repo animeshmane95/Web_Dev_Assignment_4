@@ -35,7 +35,7 @@ class EssayQuestionEditor extends React.Component {
 
       }
 
-      return fetch('http://10.0.0.77:8080/api/exam/'+examId+'/essay',
+      return fetch('https://webdev-summer1-2018-animesh.herokuapp.com/api/exam/'+examId+'/essay',
       {
         body: JSON.stringify(essay),
         headers: { 'Content-Type': 'application/json' },

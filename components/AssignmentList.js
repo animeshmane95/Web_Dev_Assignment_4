@@ -17,7 +17,7 @@ class AssignmentList extends Component {
 
   deleteAssignment(assignmentId){
 
-      return fetch('http://10.0.0.77:8080/api/delete/assignment/'+assignmentId , {
+      return fetch('https://webdev-summer1-2018-animesh.herokuapp.com/api/delete/assignment/'+assignmentId , {
       method: 'Delete'
     }).then(() => this.props.navigation.navigate("AssignmentList"
         ,{topicId:this.state.topicId}))
@@ -29,7 +29,7 @@ class AssignmentList extends Component {
     const {navigation} = newProps;
     const topicId = navigation.getParam("topicId")
     this.setState({topicId: topicId})
-    fetch("http://10.0.0.77:8080/api/topic/"+topicId+"/assignment")
+    fetch("https://webdev-summer1-2018-animesh.herokuapp.com/api/topic/"+topicId+"/assignment")
       .then(response => (response.json()))
       .then(assignments => {
         this.setState({assignments})})
@@ -43,7 +43,7 @@ class AssignmentList extends Component {
     const {navigation} = this.props;
     const topicId = navigation.getParam("topicId")
     this.setState({topicId: topicId})
-    fetch("http://10.0.0.77:8080/api/topic/"+topicId+"/assignment")
+    fetch("https://webdev-summer1-2018-animesh.herokuapp.com/api/topic/"+topicId+"/assignment")
       .then(response => (response.json()))
       .then(assignments => {
         this.setState({assignments})})

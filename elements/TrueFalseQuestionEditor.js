@@ -34,7 +34,7 @@ componentDidMount() {
       isTrue: this.state.isTrue
       }
 
-      return fetch('http://10.0.0.77:8080/api/exam/'+examId+'/truefalse',
+      return fetch('https://webdev-summer1-2018-animesh.herokuapp.com/api/exam/'+examId+'/truefalse',
       {
         body: JSON.stringify(TrueFalseQuestion),
         headers: { 'Content-Type': 'application/json' },

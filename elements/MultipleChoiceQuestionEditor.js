@@ -31,7 +31,7 @@ class MultipleChoiceQuestionEditor extends React.Component {
       options: this.state.options.toString()
       }
 
-      return fetch('http://10.0.0.77:8080/api/exam/'+examId+'/choice',
+      return fetch('https://webdev-summer1-2018-animesh.herokuapp.com/api/exam/'+examId+'/choice',
       {
         body: JSON.stringify(MCQ),
         headers: { 'Content-Type': 'application/json' },

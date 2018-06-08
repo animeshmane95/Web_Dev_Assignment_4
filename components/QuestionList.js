@@ -18,7 +18,7 @@ class QuestionList extends Component {
     const {navigation} = this.props;
     const examId = navigation.getParam("examId")
     this.setState({examId: examId})
-    fetch("http://10.0.0.77:8080/api/exam/"+examId+"/question")
+    fetch("https://webdev-summer1-2018-animesh.herokuapp.com/api/exam/"+examId+"/question")
       .then(response => (response.json()))
       .then(questions => {
         this.setState({questions})
@@ -32,7 +32,7 @@ class QuestionList extends Component {
     const {navigation} = newProps;
     const examId = navigation.getParam("examId")
     this.setState({examId: examId})
-    fetch("http://10.0.0.77:8080/api/exam/"+examId+"/question")
+    fetch("https://webdev-summer1-2018-animesh.herokuapp.com/api/exam/"+examId+"/question")
       .then(response => (response.json()))
       .then(questions => {
         this.setState({questions})})
@@ -41,7 +41,7 @@ class QuestionList extends Component {
 
    deleteQuestion(questionId){
 
-      return fetch('http://10.0.0.77:8080/api/delete/question/'+questionId , {
+      return fetch('https://webdev-summer1-2018-animesh.herokuapp.com/api/delete/question/'+questionId , {
       method: 'Delete'
     }).then(() => this.props.navigation.navigate("QuestionList"
         ,{examId:this.state.examId}))

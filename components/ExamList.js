@@ -16,7 +16,7 @@ class ExamList extends Component {
 
    deleteExam(examId){
 
-      return fetch('http://10.0.0.77:8080/api/delete/exam/'+examId , {
+      return fetch('https://webdev-summer1-2018-animesh.herokuapp.com/api/delete/exam/'+examId , {
       method: 'Delete'
     }).then(() => this.props.navigation.navigate("ExamList"
         ,{topicId:this.state.topicId}))
@@ -28,7 +28,7 @@ class ExamList extends Component {
     const {navigation} = newProps;
     const topicId = navigation.getParam("topicId")
     this.setState({topicId: topicId})
-    fetch("http://10.0.0.77:8080/api/topic/"+topicId+"/exam")
+    fetch("https://webdev-summer1-2018-animesh.herokuapp.com/api/topic/"+topicId+"/exam")
       .then(response => (response.json()))
       .then(exams => {
         this.setState({exams})})
@@ -40,7 +40,7 @@ componentDidMount() {
     const {navigation} = this.props;
     const topicId = navigation.getParam("topicId")
     this.setState({topicId: topicId})
-    fetch("http://10.0.0.77:8080/api/topic/"+topicId+"/exam")
+    fetch("https://webdev-summer1-2018-animesh.herokuapp.com/api/topic/"+topicId+"/exam")
       .then(response => (response.json()))
       .then(exams => {
         this.setState({exams})})

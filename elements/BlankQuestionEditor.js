@@ -35,7 +35,7 @@ class BlankQuestionEditor extends React.Component {
 
       }
 
-      return fetch('http://10.0.0.77:8080/api/exam/'+examId+'/blanks',
+      return fetch('https://webdev-summer1-2018-animesh.herokuapp.com/api/exam/'+examId+'/blanks',
       {
         body: JSON.stringify(blank),
         headers: { 'Content-Type': 'application/json' },
