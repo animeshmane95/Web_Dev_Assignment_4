@@ -30,7 +30,8 @@ class EssayQuestionEditor extends React.Component {
       title: this.state.title,
       description: this.state.description,
       points: this.state.points,
-      essayQuestion: this.state.essayQuestion
+      essayQuestion: this.state.essayQuestion,
+      type: 'Essay'
 
       }
 

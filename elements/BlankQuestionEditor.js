@@ -5,7 +5,7 @@ import {FormLabel, FormInput, FormValidationMessage}
   from 'react-native-elements'
 
 class BlankQuestionEditor extends React.Component {
-  static navigationOptions = { title: "Essay"}
+  static navigationOptions = { title: "Fill in the Blanks"}
   constructor(props) {
     super(props)
     this.state = {
@@ -121,12 +121,12 @@ class BlankQuestionEditor extends React.Component {
                 var first = blanks.split("[");
                 var second = first[1].split("]");
               return(
-                  <View style={{flexDirection: 'row'}}>
-                  <View>
-                    <Text style={{textAlignVertical: "center",textAlign: "center",}}>{first[0]}</Text>
+                  <View key = {100 +index} style={{flexDirection: 'row'}}>
+                  <View key = {index}>
+                    <Text  key = {100 +index} style={{textAlignVertical: "center",textAlign: "center",}}>{first[0]}</Text>
                     </View>
-                    <View>
-                    <TextInput 
+                    <View key = {200 +index}>
+                    <TextInput key = {index}
                           style = {{
                             borderWidth: 1,
                             borderColor: "black",
@@ -139,8 +139,8 @@ class BlankQuestionEditor extends React.Component {
                       numberOfLines={4}
                       />
                       </View>
-                      <View>
-                      <Text style={{textAlignVertical: "center",textAlign: "center",}}>{second[1]}</Text>
+                      <View key = {300 +index}>
+                      <Text  key = {index} style={{textAlignVertical: "center",textAlign: "center",}}>{second[1]}</Text>
                       </View>
                     </View>
 

@@ -25,6 +25,7 @@ import ExamList from './components/ExamList'
 import QuestionList from './components/QuestionList'
 
 
+
 class Home extends React.Component {
   static navigationOptions = {
     title: 'Home'
@@ -90,7 +91,7 @@ const App = createStackNavigator({
   BlankQuestionEditor,
   ScreenA,
   ScreenB,
-  ScreenX
+  ScreenX,
 });
 
 export default App;

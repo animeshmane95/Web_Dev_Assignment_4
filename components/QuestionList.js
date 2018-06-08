@@ -13,7 +13,6 @@ class QuestionList extends Component {
       examId: 1,
       questionType : "MultipleChoice"
     }
-    //this.createQuestion = this.createQuestion.bind(this)
   }
   componentDidMount() {
     const {navigation} = this.props;
@@ -69,10 +68,8 @@ class QuestionList extends Component {
       <ScrollView style={{padding: 15}}>
       {this.state.questions.map(
         (question, index) => (
-           
           <ListItem 
             key={index}
-            subtitle={question.description}
             title={question.title}
 
             rightIcon = {
