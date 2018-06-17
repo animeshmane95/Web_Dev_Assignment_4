@@ -30,8 +30,7 @@ class AssignmentEditor extends React.Component {
       title: this.state.title
 
       }
-
-      return fetch('http://10.0.0.77:8080/api/topic/'+topicId+'/assignment',
+      return fetch('https://webdev-summer1-2018-animesh.herokuapp.com/api/topic/'+topicId+'/assignment',
       {
         body: JSON.stringify(assignment),
         headers: { 'Content-Type': 'application/json' },
